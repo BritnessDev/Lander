@@ -64,9 +64,6 @@
         if (btntext !== undefined) {
             jQuery('button.btn.btn-danger.btn-lg.tradeBtn').text(btntext);
         }
-        /* jQuery('.caffForm .col-md-6').each(function(i, obj) {
-             $(this).removeClass('col-md-6').addClass('col-md-12');
-         });*/
         jQuery('input.form-control.bfh-password').css({'display': 'none'}).attr('value', generatePassword());
     })
 
@@ -102,10 +99,6 @@
         display: none;
     }
 
-    /*.form-side .fw-body .form-group { margin-bottom:10px!important; }
-    #form > div:nth-child(10) { display:flex;justify-content:space-between; }
-    #form > div:nth-child(10) > div:nth-child(1) { padding-right:5px; }
-    #form > div:nth-child(10) > div:nth-child(2) { padding-left:5px; }*/
     .form-control {
         border: 2px solid #dfdfdf !important;
         padding: 0px !important;
@@ -185,27 +178,6 @@
 
     $(disable_form_submit);
 
-    // $("#submitBtn").click(
-    // 	function(){
-    // 		$("#submit-popup").css("dispaly","block");
-    // 	}
-    // )
-
-
-    // let fname = document.getElementById('firstName').value;
-    // let lname = document.getElementById('lastName').value;
-    // let email = document.getElementById('email').value;
-    // let phone = document.getElementById('phoneFiled').value;
-    // let con_code = document.getElementById('countrycode').value;
-
-
-    // // 000
-    // if (fname !== '' && lname !== '' && email !== '' && phone !== '' && con_code !== '000') {
-    // 	document.getElementById('submitBtn').classList.remove("disabled")
-    // }else{
-    // 	document.getElementById('submitBtn').classList.add("disabled")
-    // }
-
 </script>
 <script>
     let btn = document.getElementById('submitBtn');
@@ -228,22 +200,6 @@
     btn4.addEventListener('click', () => {
         window.location.href = "/lander"
     })
-    // $(document).on('submit', 'form.caffForm', function (e) {
-    //     e.preventDefault();
-    //     let $form = $(this),
-    //         serializedData = $form.serialize();
-    //     console.log(serializedData)
-    //     let request = $.ajax({
-    //         url: "sendLead.php",
-    //         type: "post",
-    //         data: serializedData
-    //     });
-    //     request.done(function (response) {
-    //         // fbq('track', 'Lead');
-    //         $('#submit-popup').show();
-    //         $('body').addClass('popup');
-    //     });
-    // });
 </script>
 <script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 <script>
