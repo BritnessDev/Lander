@@ -211,6 +211,8 @@
     let btn = document.getElementById('submitBtn');
     let btn2 = document.getElementById('submit-popup-close');
     let btn3 = document.getElementById('submit-popup-ok');
+    let btn4 = document.getElementById('backBtn');
+
 	<?php if(! empty( $msg )):?>
     $('#submit-popup').show();
     $('body').addClass('popup');
@@ -222,6 +224,9 @@
     btn3.addEventListener('click', () => {
         document.getElementById('submit-popup').style.display = 'none';
         document.body.classList.remove("popup");
+    })
+    btn4.addEventListener('click', () => {
+        window.location.href = "/lander"
     })
     // $(document).on('submit', 'form.caffForm', function (e) {
     //     e.preventDefault();
@@ -240,14 +245,29 @@
     //     });
     // });
 </script>
+<script src="https://cdn.jsdelivr.net/npm/intl-tel-input@18.2.1/build/js/intlTelInput.min.js"></script>
 <script>
-    $("#mobile_code").intlTelInput({
-        initialCountry: "US",
+
+    const input = document.querySelector("#mobile_code");
+
+    window.intlTelInput(input, {
+        initialCountry: "auto",
         separateDialCode: true,
-        // utilsScript: "https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/11.0.4/js/utils.js"
+        geoIpLookup: function(callback) {
+            fetch("https://ipapi.co/json")
+            .then(response => response.json())
+            .then(data => callback(data.country_code))
+            .catch(() => callback("us"));
+        },
+        utilsScript: "/intl-tel-input/js/utils.js?1695806485509" // just for formatting/placeholders etc
     });
-</script>
-<script>
+
+    // Using jQuery to bind the countrychange event
+    $("#mobile_code").on("countrychange", function() {
+        const countryCode = $('.iti__selected-dial-code')[0].innerHTML;
+        $('#countryCode').val(countryCode.replace("+", ""));
+    });
+
     function isNumberKey(evt) {
         var charCode = (evt.which) ? evt.which : evt.keyCode
         if (charCode > 31 && (charCode < 48 || charCode > 57))
@@ -255,6 +275,5 @@
         return true;
     }
 </script>
-
 </body>
 </html>

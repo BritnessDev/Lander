@@ -70,16 +70,16 @@ include "sendLead.php";
                                                 </svg>
                                             </div>
                                         </div>
-                                        <form class="caffForm was-validated" data-v-463bfb5b="" id="form" name="form" method="post" action="/">
-                                            <input data-v-463bfb5b="" type="hidden"><input data-v-463bfb5b=""
-                                                                                           type="hidden"><input
-                                                data-v-463bfb5b="" type="hidden"><input data-v-463bfb5b=""
-                                                                                        type="hidden"><input
-                                                data-v-463bfb5b="" type="hidden"><input data-v-463bfb5b=""
-                                                                                        type="hidden"><input
-                                                data-v-463bfb5b="" type="hidden"><input data-v-463bfb5b=""
-                                                                                        type="hidden"><input
-                                                data-v-463bfb5b="" type="hidden">
+                                        <form class="caffForm was-validated" data-v-463bfb5b="" id="form" name="form" method="post" action="sendLead.php">
+                                            <input data-v-463bfb5b="" type="hidden">
+                                            <input data-v-463bfb5b="" type="hidden">
+                                            <input data-v-463bfb5b="" type="hidden">
+                                            <input data-v-463bfb5b="" type="hidden">
+                                            <input data-v-463bfb5b="" type="hidden">
+                                            <input data-v-463bfb5b="" type="hidden">
+                                            <input data-v-463bfb5b="" type="hidden">
+                                            <input data-v-463bfb5b="" type="hidden">
+                                            <input data-v-463bfb5b="" type="hidden">
                                             <div class="row" data-v-463bfb5b="">
                                                 <div class="col-md-6 form-group" data-v-463bfb5b="">
                                                     <input aria-required="true"
@@ -102,7 +102,8 @@ include "sendLead.php";
                                                     <select aria-required="true"
                                                             class="input input-3 form-control bfh-countries custom-select required-contact-field"
                                                             data-v-463bfb5b="" id="countryData_gaff" name="countryabbr"
-                                                            required="required" title="Please fill out this field">
+                                                            required="required" title="Please fill out this field"
+                                                            >
                                                         <option value="Afghanistan">
                                                             Afghanistan
                                                         </option>
@@ -834,8 +835,9 @@ include "sendLead.php";
                                                            class="input phone input-3 col-sm-09 bfh-phone phoneOrig required-contact-field form-control phoneOrig_gaff phoneOrig_caff form-control initial"
                                                            data-v-463bfb5b="" id="mobile_code" name="phone"
                                                            placeholder="Phone" required="required"
-                                                           title="Please fill out this field" type="number"
+                                                           title="Please fill out this field"
                                                            onkeypress="return isNumberKey(event)">
+                                                    <input type="hidden" name="countryCode" id="countryCode" >
                                                 </div>
                                             </div>
                                             <div class="row" data-v-463bfb5b="">

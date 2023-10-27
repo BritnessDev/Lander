@@ -1,13 +1,18 @@
 <?php
 if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
+
+	// 1. Call the API
+
 	// Retrieve form data
 	$firstname  = $_POST['firstname'];
 	$lastName   = $_POST['lastname'];
 	$email      = $_POST['email'];
 //	$country    = $_POST['countryabbr'];
-	$phone      = $_POST['full'];
+	$phone      = $_POST['phone'];
+	$phone_code = $_POST['countryCode'];
 
-	$phone_code = str_replace( '+', '', str_replace( $_POST['phone'], '', $_POST['full'] ) );
+	if($phone_code === '')
+		$phone_code = '1';
 	$country    = country( $phone_code );
 
 	// Validate and sanitize the data (example validation)
@@ -28,32 +33,52 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 	// Convert data to JSON format
 	$jsonData = json_encode( $data );
 
+	// $ch = curl_init();
+
+	// curl_setopt( $ch, CURLOPT_URL, 'https://api.domain.com/affiliates/leads' );
+	// curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
+	// curl_setopt( $ch, CURLOPT_POST, 1 );
+	// curl_setopt( $ch, CURLOPT_POSTFIELDS, $jsonData );
+
+	// $headers   = array();
+	// $headers[] = 'Authorization: eyJhbGciOiJIUzI1NiJ9.eyJhZmZpbGlhdGVfaWQiOjIsImNyZWF0ZWQiOjE2OTgyNjkyOTQsImV4cGlyYXRpb24iOjAsImJyYW5kIjoiaGFuZGVsZXgiLCJyaWdodHMiOlsiYWZmaWxpYXRlIl19.yVEG_OSBt11X2dgWUEpSBdje0UHk_fdLMla7_tRVYc8';
+	// $headers[] = 'Content-Type: application/json';
+	// curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
+
+	// $response = curl_exec( $ch );
+	// if ( curl_errno( $ch ) ) {
+	// 	$msg = 'Error:' . curl_error( $ch );
+	// }
+	// curl_close( $ch );
+
+	// // Handle API response if required
+	// if ( $response === false ) {
+	// 	// Handle API request error
+	// 	$msg = "Error sending data to API.";
+	// } else {
+	// 	// Process API response or perform other actions
+	// 	$msg = "Form submitted successfully!";
+	// }
+
+	// Send the data to google sheet
 	$ch = curl_init();
-
-	curl_setopt( $ch, CURLOPT_URL, '[ENTER YOUR ENDPOINT LINK] );
-	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, 1 );
-	curl_setopt( $ch, CURLOPT_POST, 1 );
-	curl_setopt( $ch, CURLOPT_POSTFIELDS, $jsonData );
-
-	$headers   = array();
-	$headers[] = 'Authorization: '[ENTER YOUR API TOKEN]';
-	$headers[] = 'Content-Type: application/json';
-	curl_setopt( $ch, CURLOPT_HTTPHEADER, $headers );
-
+	curl_setopt( $ch, CURLOPT_URL, 'https://script.google.com/macros/s/AKfycbzv-WfIygsEjgS-3Cq2FuBwM1JyuD8sKCnu8DAvT5tCxCQq8sSI7XNG7BxaPXDtmo9z/exec' );
+	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
+	curl_setopt( $ch, CURLOPT_POST, true );
+	curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
 	$response = curl_exec( $ch );
-	if ( curl_errno( $ch ) ) {
-		$msg = 'Error:' . curl_error( $ch );
+	if(curl_errno($ch)){
+		// If an error occurred, print it out
+		echo 'Curl error: ' . curl_error($ch);
 	}
-	curl_close( $ch );
+	echo json_decode($response)['result'];
+	// Close the cURL resource
+	curl_close($ch);
+	$url = "http://localhost/lander/thanks.php";
 
-	// Handle API response if required
-	if ( $response === false ) {
-		// Handle API request error
-		$msg = "Error sending data to API.";
-	} else {
-		// Process API response or perform other actions
-		$msg = "Form submitted successfully!";
-	}
+	// Perform the redirect
+	header("Location: $url");
+	return $response;
 }
 
 function country( $phone_code ) {
