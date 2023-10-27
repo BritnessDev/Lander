@@ -30,7 +30,7 @@
                 <p>We will contact you shortly regarding your registration. Be sure to stay tuned</p>
                 <img alt="Bitcoin Era Logo" src="img/blue-check.png">
                 <h4>Check your Email</h4>
-                <p>If you didn't receive any mail contact garbakordahiru@gmail.com</p>
+                <p class="d-flex flex-row justify-content-center">If you didn't receive any mail contact&nbsp;<a href = "mailto: abc@example.com">garbakordahiru@gmail.com</a></p>
                 <button class="btn btn btn-success btn-lg mt-5 mb-4" data-v-463bfb5b="" id="backBtn">
                     Back To Trade
                 </button>
