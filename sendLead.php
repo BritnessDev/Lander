@@ -23,11 +23,11 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
 	// Prepare data for API request
 	$data = array(
-		'email'     => $email,
-		'firstname' => $firstname,
-		'lastname'  => $lastName,
-		'country'   => $country,
-		'phone'     => $phone,
+		'Firstname' => $firstname,
+		'Lastname'  => $lastName,
+		'Country'   => $country,
+		'Phonenumber'     => $phone_code.$phone,
+		'Email'     => $email,
 	);
 
 	// Convert data to JSON format
@@ -62,7 +62,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
 	// Send the data to google sheet
 	$ch = curl_init();
-	curl_setopt( $ch, CURLOPT_URL, 'https://script.google.com/macros/s/AKfycbzxAmZ0tHT1fJpjvT1cT3VrpTqxOqfZrh-qWNGCI2PI7-oclZDq-eI6cwa_Qp7xB7obKw/exec' );
+	curl_setopt( $ch, CURLOPT_URL, 'https://script.google.com/macros/s/AKfycbx-pJi6nMBf9mSkbfrQVzB1AgEeWOX5haKzn2yPv_eaguHrV2otRKcmxJAEX0McCorKqQ/exec' );
 	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 	curl_setopt( $ch, CURLOPT_POST, true );
 	curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
