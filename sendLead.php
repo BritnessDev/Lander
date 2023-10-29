@@ -74,7 +74,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 	echo json_decode($response)['result'];
 	// Close the cURL resource
 	curl_close($ch);
-	$url = "http://localhost/lander/thanks.php";
+	$url = "thanks.php";
 
 	// Perform the redirect
 	header("Location: $url");
