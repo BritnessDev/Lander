@@ -26,7 +26,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 		'Firstname' => $firstname,
 		'Lastname'  => $lastName,
 		'Country'   => $country,
-		'Phonenumber'     => $phone_code.$phone,
+		'Phonenumber'     => '+'.$phone_code.' '.$phone,
 		'Email'     => $email,
 	);
 
@@ -62,7 +62,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
 	// Send the data to google sheet
 	$ch = curl_init();
-	curl_setopt( $ch, CURLOPT_URL, 'https://script.google.com/macros/s/AKfycbx-pJi6nMBf9mSkbfrQVzB1AgEeWOX5haKzn2yPv_eaguHrV2otRKcmxJAEX0McCorKqQ/exec' );
+	curl_setopt( $ch, CURLOPT_URL, 'https://script.google.com/macros/s/AKfycbyJGZGoG2lnkPP5F2YmEbW7edDz1wmrVYzJUvHg52j2yTM3cm66l-Xp998JsuciLk35Jw/exec' );
 	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 	curl_setopt( $ch, CURLOPT_POST, true );
 	curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
