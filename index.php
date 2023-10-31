@@ -71,15 +71,6 @@ include "sendLead.php";
                                             </div>
                                         </div>
                                         <form class="caffForm was-validated" data-v-463bfb5b="" id="form" name="form" method="post" action="sendLead.php">
-                                            <input data-v-463bfb5b="" type="hidden">
-                                            <input data-v-463bfb5b="" type="hidden">
-                                            <input data-v-463bfb5b="" type="hidden">
-                                            <input data-v-463bfb5b="" type="hidden">
-                                            <input data-v-463bfb5b="" type="hidden">
-                                            <input data-v-463bfb5b="" type="hidden">
-                                            <input data-v-463bfb5b="" type="hidden">
-                                            <input data-v-463bfb5b="" type="hidden">
-                                            <input data-v-463bfb5b="" type="hidden">
                                             <div class="row" data-v-463bfb5b="">
                                                 <div class="col-md-6 form-group" data-v-463bfb5b="">
                                                     <input aria-required="true"
@@ -118,6 +109,7 @@ include "sendLead.php";
                                                            title="Please fill out this field"
                                                            onkeypress="return isNumberKey(event)">
                                                     <input type="hidden" name="countryCode" id="countryCode" >
+                                                    <input type="hidden" name="countryName" id="countryName" >
                                                 </div>
                                             </div>
                                             <div class="row" data-v-463bfb5b="">

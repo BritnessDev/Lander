@@ -205,8 +205,7 @@
 <script>
 
     const input = document.querySelector("#mobile_code");
-
-    window.intlTelInput(input, {
+    const intl = window.intlTelInput(input, {
         initialCountry: "auto",
         separateDialCode: true,
         geoIpLookup: function(callback) {
@@ -222,6 +221,7 @@
     $("#mobile_code").on("countrychange", function() {
         const countryCode = $('.iti__selected-dial-code')[0].innerHTML;
         $('#countryCode').val(countryCode.replace("+", ""));
+        $('#countryName').val(intl.getSelectedCountryData().name);
     });
 
     function isNumberKey(evt) {

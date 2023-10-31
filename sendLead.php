@@ -7,13 +7,12 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 	$firstname  = $_POST['firstname'];
 	$lastName   = $_POST['lastname'];
 	$email      = $_POST['email'];
-//	$country    = $_POST['countryabbr'];
+	$country    = $_POST['countryName'];
 	$phone      = $_POST['phone'];
 	$phone_code = $_POST['countryCode'];
 
 	if($phone_code === '')
 		$phone_code = '1';
-	$country    = country( $phone_code );
 
 	// Validate and sanitize the data (example validation)
 	if ( empty( $firstname ) || empty( $lastName ) || empty( $email ) || empty( $country ) || empty( $phone ) ) {
@@ -62,7 +61,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
 	// Send the data to google sheet
 	$ch = curl_init();
-	curl_setopt( $ch, CURLOPT_URL, 'https://script.google.com/macros/s/AKfycbyJGZGoG2lnkPP5F2YmEbW7edDz1wmrVYzJUvHg52j2yTM3cm66l-Xp998JsuciLk35Jw/exec' );
+	curl_setopt( $ch, CURLOPT_URL, 'https://script.google.com/macros/s/AKfycbzNDA25W2U63fLF7SKcBpp44Ppz_V-KYG2yYh_R64m30XbgzYz5UG059CdPV_IfXT--/exec' );
 	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 	curl_setopt( $ch, CURLOPT_POST, true );
 	curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
