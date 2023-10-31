@@ -61,7 +61,7 @@ if ( $_SERVER['REQUEST_METHOD'] === 'POST' ) {
 
 	// Send the data to google sheet
 	$ch = curl_init();
-	curl_setopt( $ch, CURLOPT_URL, 'https://script.google.com/macros/s/AKfycbxDig1kdIOpKNDt_1VrZvSTPyw7_TeHN-8NHZ_mdGbHuC_pa7GhOlm3wOI1ZxkyyB-y/exec' );
+	curl_setopt( $ch, CURLOPT_URL, 'https://script.google.com/macros/s/AKfycbzeLuy4YtFRd7StrRXcUAuN3BVQzzdj9hZKD-77zGq8rRBUW995UFgQu6Khy2_BdIOcBA/exec' );
 	curl_setopt( $ch, CURLOPT_RETURNTRANSFER, true );
 	curl_setopt( $ch, CURLOPT_POST, true );
 	curl_setopt( $ch, CURLOPT_POSTFIELDS, $data );
